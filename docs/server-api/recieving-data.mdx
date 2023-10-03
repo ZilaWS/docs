@@ -1,0 +1,41 @@
+---
+sidebar_position: 2
+---
+
+# Recieving data
+
+There are two ways to reciveve data from a client. With ZilaWS data can be asked and waited for.
+
+## Asking for data
+To ask a client for data, the `waiter` function can be used. This will **trigger a clientside [MessageHandler](/docs/intro#recieving-data-from-the-clientside)** and get its return value.
+```ts
+const server = new ZilaServer({
+  port: 6589,
+  logger: true, //Enables logging
+  verbose: true //Enables verbose logging
+});
+
+console.log(await server.waiter(client, "GetValueOfPI") as number); // --> 3.141592653589793
+```
+
+## Waiting for data
+Set a MessageHandler. They run when the server recives a message from a client with the event's identifier. The params contain the data. There can be any number of params with any types.
+
+```ts
+server.setMessageHandler("SomeIdentifier", (param1: string, param2: number, param3: object /*, ...*/) => {
+    //Your code
+});
+```
+
+If the client uses the `waiter` function to send the data up, you can even make the client wait until it is done.
+
+```ts
+server.setMessageHandler("SomeIdentifier", async (param1: string, param2: number, param3: object /*,...*/) => {
+    await new Promise<void>((resolve) =>{
+        //Your Code is represented by this timeout
+        setTimeout(() => {
+            resolve();
+        }, 3000);
+    });
+});
+```

@@ -1,0 +1,45 @@
+---
+sidebar_position: 5
+---
+
+import OR from "@site/src/components/OR";
+
+# Terminating a connection
+There are two ways a connection can be terminated using *ZilaWS*.
+
+## Kicking
+
+Kicking a client only disconnects it from the server.
+
+```ts
+server.kickClient(clientSocket, "A reason to kick a client");
+```
+
+<OR />
+
+```ts
+clientSocket.kick("A reason to kick a client");
+```
+
+## Banning
+
+Banning a client will blacklist it's IP-address from connecting again to the server. The list of banned clients refreshes with every server restart.
+
+```ts
+server.banClient(clientSocket, "A reason to ban a client");
+```
+
+<OR />
+
+```ts
+clientSocket.ban("A reason to ban a client");
+```
+
+## The client's perspective
+The error handler gets called upon connection closing.
+
+```ts
+const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
+    //The reason param's value is going to be the reason of the kick or the ban.
+});
+```

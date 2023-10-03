@@ -1,0 +1,61 @@
+---
+sidebar_position: 3
+---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import OR from "@site/src/components/Or";
+
+# Sending data
+
+## Waiter
+ZilaWS has a unique function called `waiter`. Waiters (as their name states) can be awaited.
+They only resolve when the `MessageHandler` on the clientside resolves or returns thus making it perfect to retrieve data from a client.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="S" label="Client Side">
+```
+```ts
+console.log(await client.waiter("Example name", "myData", true));
+```
+
+```mdx-code-block 
+  </TabItem>
+  <TabItem value="C" label="Server Side">
+```
+```ts
+server.setMessageHandler("Example name", (data1: string, data2: boolean) => {
+    //Your code here...
+    return "This is message from the clientside";
+});
+```
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Send
+You can send data / trigger a `MessageHandler` by calling the `send` function.
+You can send any number of variables with any types.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="S" label="Client Side">
+```
+```ts
+client.send("Example name", "myData", true);
+```
+
+```mdx-code-block 
+  </TabItem>
+  <TabItem value="C" label="Server Side">
+```
+```ts
+server.setMessageHandler("Example name", (data1: string, data2: boolean) => {
+    //Your code here...
+});
+```
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
