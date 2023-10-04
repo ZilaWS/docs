@@ -1,6 +1,6 @@
 {
   "name": "zila-ws",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -12,7 +12,7 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "release": "rimraf ./*.tgz -g && npm run package && node tools/versionManager.js"
+    "release": "node tools/versionManager.js"
   },
   "dependencies": {
     "@docusaurus/core": "^2.4.3",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.4.3",
     "@tsconfig/docusaurus": "^1.0.5",
+    "prompt": "^1.3.0",
     "rimraf": "^5.0.5",
     "typescript": "^4.7.4"
   },
