@@ -45,7 +45,7 @@ In ZilaWS 1.0, you can run multiple servers in the same application. You can sta
   <TabItem value="mts" label="ES Module">
 ```
 ```ts
-import ZilaServer from "zilaws-server";
+import { ZilaServer } from "zilaws-server";
 
 const server = new ZilaServer({
   port: 6589,
@@ -59,7 +59,7 @@ const server = new ZilaServer({
   <TabItem value="cts" label="CommonJS">
 ```
 ```ts
-const ZilaServer = require("zilaws-server");
+const { ZilaServer } = require("zilaws-server");
 
 const server = new ZilaServer({
   port: 6589,
@@ -82,7 +82,7 @@ Connecting to the server is asynchronous. The first parameter is a standard webs
 ```
 
 ```ts
-import connectTo from "zilaws-client";
+import { connectTo } from "zilaws-client";
 
 const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
   console.error("ZilaConnection error happened:\n" + reason);
@@ -95,7 +95,7 @@ const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
 ```
 
 ```ts
-const connectTo = require("zilaws-client");
+const { connectTo } = require("zilaws-client");
 
 const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
   console.error("ZilaConnection error happened:\n" + reason);

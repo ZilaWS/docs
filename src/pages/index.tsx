@@ -40,14 +40,14 @@ export default function Home(): JSX.Element {
           <section style={{margin: '30px'}}>
             <h3>Client</h3>
             <Codeblock language='bash'>
-              npm install zilaws-client
+              npm install zilaws-client@latest
             </Codeblock>
           </section>
           <section style={{margin: '30px'}}>
             <h3>Server</h3>
             
             <Codeblock language='bash'>
-              npm install zilaws-server
+              npm install zilaws-server@latest
             </Codeblock>
           </section>
         </div>
