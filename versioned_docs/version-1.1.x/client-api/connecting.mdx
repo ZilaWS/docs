@@ -16,12 +16,12 @@ import TabItem from "@theme/TabItem";
   <TabItem value="mts" label="ES Module">
 ```
 ```ts
-import connectTo from "zilaws-client";
+import { connectTo } from "zilaws-client";
 ```
 
 if you need them, you can import types too:
 ```ts
-import connectTo, { ZilaConnection, WSStatus } from "zilaws-client";
+import { connectTo }, { ZilaConnection, WSStatus } from "zilaws-client";
 ```
 
 ```mdx-code-block 
@@ -29,7 +29,7 @@ import connectTo, { ZilaConnection, WSStatus } from "zilaws-client";
   <TabItem value="cts" label="CommonJS">
 ```
   ```ts
-const connectTo = require("zilaws-client");
+const { connectTo } = require("zilaws-client");
 ```
 
 if you need them, you can import types too:
