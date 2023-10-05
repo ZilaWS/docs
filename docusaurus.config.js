@@ -27,6 +27,7 @@ const config = {
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -72,6 +73,18 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        backgroundColor: "red",
+        content: "1.1.0 is out. Importing is fixed.",
+        isCloseable: true,
+        textColor: "white"
+      },
+      metadata: [
+        {
+          name: "keywords",
+          content: "websocket, library, waiter, async, client, server, typescript, javascript, connection, eventhandler, tcp, realtime, browser, node, events, fast"
+        }
+      ],
       // Replace with your project's social card
       image: 'img/logo.png',
       navbar: {
