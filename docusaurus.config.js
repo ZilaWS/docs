@@ -74,8 +74,8 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        backgroundColor: "red",
-        content: "1.1.0 is out. Importing is fixed.",
+        backgroundColor: "#db2c46",
+        content: "Patch 1.1.1 is out. <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://github.com/ZilaWS/client/releases/tag/v1.1.1\">Check what got fixed.</a> ",
         isCloseable: true,
         textColor: "white"
       },
