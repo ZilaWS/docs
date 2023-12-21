@@ -79,6 +79,12 @@ const config = {
         isCloseable: true,
         textColor: "white"
       },*/
+      announcementBar: {
+        backgroundColor: "#a84300",
+        content: " <a href=\"/docs/next/changelog\">Check out what's coming in 1.2.0!</a>",
+        isCloseable: true,
+        textColor: "white"
+      },
       metadata: [
         {
           name: "keywords",
