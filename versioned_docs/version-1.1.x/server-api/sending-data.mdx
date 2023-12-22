@@ -11,7 +11,7 @@ import OR from "@site/src/components/OR";
 
 ### Waiter
 ZilaWS has a unique function called `waiter`. Waiters (as their name states) can be awaited.
-They only resolve when the `MessageHandler` on the clientside resolves or returns thus making it perfect to retrieve data from a client.
+They only resolve when the `MessageHandler` on the client side resolves or returns thus making it perfect to retrieve data from a client.
 
 ```mdx-code-block
 <Tabs>
@@ -33,7 +33,7 @@ console.log(await socket.waiter("Example name", "myData", true));
 ```ts
 client.setMessageHandler("Example name", (data1: string, data2: boolean) => {
     //Your code here...
-    return "This is message from the clientside";
+    return "This is message from the client side";
 });
 ```
 ```mdx-code-block

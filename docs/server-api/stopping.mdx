@@ -6,8 +6,9 @@ sidebar_position: 6
 
 ## Asynchronous (recommended)
 
-Using the async server stop method is more recommended because it will disconnect all of the clients safely.
-You can even give it a reason which'll get sent down to all the clients. Of course, it is optional. 
+Using the async server stop method is recommended since it will disconnect all of the clients
+safely. You are able to give a reason which will be sent down to the clients.
+Naturally, it is optional.
 
 ```ts
 await server.stopServerAsync("Server stop reason");

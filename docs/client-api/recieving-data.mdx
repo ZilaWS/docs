@@ -8,7 +8,7 @@ import OR from "@site/src/components/OR";
 There are two ways to reciveve data from the server. With ZilaWS data can be asked and waited for.
 
 ## Asking for data
-To ask the server for data, the `waiter` function can be used. This will **trigger a serverside [MessageHandler](/docs/intro#recieving-data-from-the-clientside)** and get its return value.
+To ask the server for data, the `waiter` function can be used. This will **trigger a server side [MessageHandler](/docs/intro#recieving-data-from-the-client-side)** and get its return value.
 ```ts
 const client = await connectTo("wss://yourhost.com");
 
@@ -16,7 +16,7 @@ console.log(await client.waiter("GetValueOfPI") as number); // --> 3.14159265358
 ```
 
 ## Waiting for data
-MessageHandlers can be registered on clientside too. They run when the client recives a message from the server with the event's identifier. The params contain the data. There can be any number of params with any types.
+MessageHandlers can be registered on client side too. They run when the client recives a message from the server with the event's identifier. The params contain the data. There can be any number of params with any types.
 
 ```ts
 client.setMessageHandler("SomeIdentifier", (param1: string, param2: number, param3: object /*, ...*/) => {

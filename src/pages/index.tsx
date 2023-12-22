@@ -34,7 +34,7 @@ export default function Home(): JSX.Element {
       description={siteConfig.tagline}>
       <HomepageHeader />
       <main style={{ padding: "15px" }}>
-        <h3 style={{textAlign: "center"}}>In order for ZilaWS to work, both the serverside and the clientside is needed</h3>
+        <h3 style={{textAlign: "center"}}>In order for ZilaWS to work, both the server side and the client side is needed</h3>
         <p style={{textAlign: "center"}}>Technically it is compatible with a simple WS server or client, however you'll need to take care of the message handling.</p>
         <h2 style={{ textAlign: 'center' }}>Installing</h2>
         

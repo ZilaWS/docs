@@ -107,8 +107,8 @@ const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
 </Tabs>
 ```
 
-## Recieving data from the clientside
-In order to recieve data from the clientside, you need to register a `MessageHandler`. A `MessageHandler` has an identifier and a callback with any number of any typed parameters. The callback gets called when a client asks for it. The data recieved from the client will be passed as parameters.
+## Recieving data from the client side
+In order to recieve data from the client side, you need to register a `MessageHandler`. A `MessageHandler` has an identifier and a callback with any number of any typed parameters. The callback gets called when a client asks for it. The data recieved from the client will be passed as parameters.
 
 ```ts
 server.setMessageHandler("serverSample", (socket, text: string) => {

@@ -10,8 +10,13 @@ import OR from "@site/src/components/OR";
 ## Send data to a specific client
 
 ### Waiter
-ZilaWS has a unique function called `waiter`. Waiters (as their name states) can be awaited.
-They only resolve when the `MessageHandler` on the clientside resolves or returns thus making it perfect to retrieve data from a client.
+ZilaWS has a unique function called `waiter`. Waiters (as their name suggests) can be awaited. They only resolve when the client side  MessageHandler resolves or returns thus making it perfect for retrieving data from a client.
+They only resolve when the `MessageHandler` on the client side resolves or returns thus making it perfect to retrieve data from a client.
+
+#### Syntax
+```ts
+waiter(socket: ZilaConnection, eventHandlerName: string, ...data: any[])
+```
 
 ```mdx-code-block
 <Tabs>
@@ -33,7 +38,7 @@ console.log(await socket.waiter("Example name", "myData", true));
 ```ts
 client.setMessageHandler("Example name", (data1: string, data2: boolean) => {
     //Your code here...
-    return "This is message from the clientside";
+    return "This is message from the client side";
 });
 ```
 ```mdx-code-block
@@ -42,8 +47,13 @@ client.setMessageHandler("Example name", (data1: string, data2: boolean) => {
 ```
 
 ### Send
-You can send data / trigger a `MessageHandler` by calling the `send` function.
-You can send any number of variables with any types.
+
+You are able to send data to the client. The data can be any amount of variables of any type. When the data is sent, it will trigger the corresponding client-side MessageHandler.
+
+#### Syntax
+```ts
+send(eventHandlerName: string, ...data: any[])
+```
 
 ```mdx-code-block
 <Tabs>
@@ -74,10 +84,10 @@ client.setMessageHandler("Example name", (data1: string, data2: boolean) => {
 ```
 
 ## Broadcasting
-Sometimes you need to send a message to all of the clients. Don't worry, *ZilaWS* got it covered.
+Sometimes you need to send a message to all the clients. Don't worry, ZilaWS got you covered.
 
 ### Waiter
-You can use `Promise.allSettled` for example to send a message to all clients and wait for all of them to respond.
+For example you can use `Promise.allSettled` to send a message to the clients and wait for all of them to respond.
 
 ```mdx-code-block
 <Tabs>
@@ -94,7 +104,7 @@ const responses = await Promise.allSettled(server.broadcastWaiter("Waiter Broadc
 ```ts
 client.setMessageHandler("Waiter Broadcast Example", (data1: string) => {
     //Your code here...
-    return "A message from the clientside";
+    return "A message from the client side";
 });
 ```
 ```mdx-code-block
