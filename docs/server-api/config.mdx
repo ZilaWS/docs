@@ -1,0 +1,80 @@
+---
+sidebar_position: 2
+---
+
+# Configuring the server
+
+### Setting the port
+```ts
+port: number;
+```
+### Securing the connection
+* Set this if you want to secure the connection
+  ```ts
+  https?: { ... }
+  ```
+    * The path to the certificate file. Supports: .pem
+
+    ```ts
+        pathToCert: string;
+    ```
+
+    * The path to the certificate key file. Supports: .pem
+    ```ts
+        pathToKey: string;
+    ```
+    * The password which the certificate is encrypted with.
+    ```ts
+        passphrase?: string;
+    ```
+
+### Verbose logging
+
+```ts
+verbose?: boolean;
+```
+
+### Logger
+* You can override the server's default *Logger* system by giving this property an [ILogger](./ilogger) interface. 
+* If you set it true, the default logging script will be used.
+
+```ts
+logger?: boolean | ILogger;
+```
+
+### Host
+* Sets the host for the server
+```ts
+host?: string;
+```
+
+### Header event
+* This event handler gets called before a new WS connection would be created.
+* If you want to add new headers to the upgrade frame's reponse, return them as an array.
+
+```ts
+headerEvent?: (recievedHeaders: IncomingHttpHeaders) => Array<string> | void;
+```
+
+### Max waiter time
+* The maximal waiting time for waiters.
+* Defaults to 800ms
+
+```ts
+maxWaiterTime?: number;
+```
+
+### Custom client class
+
+* More info [here](./extending)
+
+```ts
+clientClass?: new (
+    socket: WebSocketClient,
+    ip: string | undefined,
+    server: ZilaServer,
+    isBrowser: boolean,
+    headers: { [name: string]: string },
+    cookies?: Map<string, string>
+) => ZilaClient;
+```

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 ---
 
 # Recieving data
@@ -8,7 +8,7 @@ There are two ways to reciveve data from a client. With ZilaWS data can be asked
 
 ## Asking for data
 To ask a client for data, use the `waiter` function. This will **trigger a client side [MessageHandler](/docs/intro#recieving-data-from-the-client-side)** and return its value.
-
+The maximum waiting time for this is the server's maxWaitingTime value in miliseconds. 
 ```ts
 const server = new ZilaServer({
   port: 6589,

@@ -15,11 +15,11 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_collecting_re_lp6p.svg').default,
     description: (
       <>
-        CommonJS: 12KB <br />
-        ESM: 12KB <br />
+        CommonJS: 13KB <br />
+        ESM: 13KB <br />
         UMD: 16KB <br />
         <span style={{ fontSize: "0.8rem" }}>
-          On version 1.0.0
+          On version 2.0.0
         </span>
       </>
     ),
@@ -49,10 +49,10 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         <h6>Average speed</h6>
-        Client side waiter: 18 ms <br/>
-        Server Side waiter: 14 ms <br/>
+        Client side waiter: 5 ms <br/>
+        Server Side waiter: 6 ms <br/>
         <span style={{ fontSize: "0.8rem" }}>
-          On version 1.0.0
+          On version 2.0.0
         </span>
       </>
     )
