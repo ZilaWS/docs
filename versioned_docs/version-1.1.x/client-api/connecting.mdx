@@ -10,11 +10,8 @@ import TabItem from "@theme/TabItem";
 
 ## Importing the library
 
-
-```mdx-code-block
 <Tabs>
   <TabItem value="mts" label="ES Module">
-```
 ```ts
 import { connectTo } from "zilaws-client";
 ```
@@ -22,13 +19,10 @@ import { connectTo } from "zilaws-client";
 if you need them, you can import types too:
 ```ts
 import {connectTo, ZilaConnection, WSStatus } from "zilaws-client";
-```
-
-```mdx-code-block 
+``` 
   </TabItem>
   <TabItem value="cts" label="CommonJS">
-```
-  ```ts
+```ts
 const { connectTo } = require("zilaws-client");
 ```
 
@@ -36,10 +30,8 @@ if you need them, you can import types too:
 ```ts
 const { ZilaConnection, WSStatus } = require("zilaws-client");
 ```
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ## Connecting
 Connecting to the server is asynchronous. The first parameter is a standard websocket connection URL string. The second parameter of the `connectTo` function is optional. It is a callback which gets called when a problem or error happens.

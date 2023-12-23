@@ -17,33 +17,25 @@ Let's start sending and recieving data!
   - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
 
 ### Downloading
-```mdx-code-block
 <Tabs>
   <TabItem value="Server" label="Server API">
-```
 ```bash
 npm i zilaws-server@latest
 ```
-
-```mdx-code-block 
   </TabItem>
   <TabItem value="Client" label="Client API">
-```
+
 ```bash
 npm i zilaws-client@latest
 ```
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ## Starting the server
 In ZilaWS 1.0, you can run multiple servers in the same application. You can start by initializing a server instance and storing it in a variable.
 
-```mdx-code-block
 <Tabs>
   <TabItem value="mts" label="ES Module">
-```
 ```ts
 import { ZilaServer } from "zilaws-server";
 
@@ -53,11 +45,8 @@ const server = new ZilaServer({
   verbose: true //Enables verbose logging
 });
 ```
-
-```mdx-code-block 
   </TabItem>
   <TabItem value="cts" label="CommonJS">
-```
 ```ts
 const { ZilaServer } = require("zilaws-server");
 
@@ -67,19 +56,15 @@ const server = new ZilaServer({
   verbose: true //Enables verbose logging
 });
 ```
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ## Connecting to the server
 
 Connecting to the server is asynchronous. The first parameter is a standard websocket connection URL string. The second parameter of the `connectTo` function is optional. It is a callback which gets called when a problem or error happens.
 
-```mdx-code-block
 <Tabs>
   <TabItem value="mts" label="ES Module">
-```
 
 ```ts
 import { connectTo } from "zilaws-client";
@@ -88,11 +73,8 @@ const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
   console.error("ZilaConnection error happened:\n" + reason);
 });
 ```
-
-```mdx-code-block 
   </TabItem>
   <TabItem value="cts" label="CommonJS">
-```
 
 ```ts
 const { connectTo } = require("zilaws-client");
@@ -102,10 +84,8 @@ const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
 });
 ```
 
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ## Recieving data from the client side
 In order to recieve data from the client side, you need to register a `MessageHandler`. A `MessageHandler` has an identifier and a callback with any number of any typed parameters. The callback gets called when a client asks for it. The data recieved from the client will be passed as parameters.
