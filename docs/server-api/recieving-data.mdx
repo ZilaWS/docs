@@ -28,11 +28,11 @@ server.setMessageHandler("SomeIdentifier", (param1: string, param2: number, para
 });
 ```
 
-If the client uses the `waiter` function to send data, you can make it wait until it is done.
+If the client uses the [waiter](../waiters) function to send data, you can make it wait until it is done.
 
 ```ts
 server.setMessageHandler("SomeIdentifier", async (param1: string, param2: number, param3: object /*,...*/) => {
-    await new Promise<void>((resolve) =>{
+    return await new Promise<void>((resolve) =>{
         //Your Code is represented by this timeout
         setTimeout(() => {
             resolve();

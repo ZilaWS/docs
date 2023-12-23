@@ -9,43 +9,6 @@ import OR from "@site/src/components/OR";
 
 ## Send data to a specific client
 
-### Waiter
-ZilaWS has a unique function called `waiter`. Waiters (as their name suggests) can be awaited. They only resolve when the client side  MessageHandler resolves or returns thus making it perfect for retrieving data from a client.
-They only resolve when the `MessageHandler` on the client side resolves or returns thus making it perfect to retrieve data from a client.
-
-#### Syntax
-```ts
-waiter(socket: ZilaConnection, eventHandlerName: string, ...data: any[])
-```
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="S" label="Server Side">
-```
-```ts
-console.log(await server.waiter(socket, "Example name", "myData", true));
-```
-<OR/>
-
-```ts
-console.log(await socket.waiter("Example name", "myData", true));
-```
-
-```mdx-code-block 
-  </TabItem>
-  <TabItem value="C" label="Client Side">
-```
-```ts
-client.setMessageHandler("Example name", (data1: string, data2: boolean) => {
-    //Your code here...
-    return "This is message from the client side";
-});
-```
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
 ### Send
 
 You are able to send data to the client. The data can be any amount of variables of any type. When the data is sent, it will trigger the corresponding client-side MessageHandler.
@@ -83,18 +46,26 @@ client.setMessageHandler("Example name", (data1: string, data2: boolean) => {
 </Tabs>
 ```
 
-## Broadcasting
-Sometimes you need to send a message to all the clients. Don't worry, ZilaWS got you covered.
-
 ### Waiter
-For example you can use `Promise.allSettled` to send a message to the clients and wait for all of them to respond.
+
+[Waiters](../waiters) can be used to simply send data too, but it is not practical to do so.
+
+#### Syntax
+```ts
+waiter(socket: ZilaConnection, eventHandlerName: string, ...data: any[])
+```
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="S" label="Server Side">
 ```
 ```ts
-const responses = await Promise.allSettled(server.broadcastWaiter("Waiter Broadcast Example", "Broadcast data"));
+console.log(await server.waiter<string>(socket, "Example name", "myData", true));
+```
+<OR/>
+
+```ts
+console.log(await socket.waiter<string>("Example name", "myData", true));
 ```
 
 ```mdx-code-block 
@@ -102,9 +73,9 @@ const responses = await Promise.allSettled(server.broadcastWaiter("Waiter Broadc
   <TabItem value="C" label="Client Side">
 ```
 ```ts
-client.setMessageHandler("Waiter Broadcast Example", (data1: string) => {
+client.setMessageHandler("Example name", (data1: string, data2: boolean) => {
     //Your code here...
-    return "A message from the client side";
+    return "This is message from the client side";
 });
 ```
 ```mdx-code-block
@@ -112,8 +83,11 @@ client.setMessageHandler("Waiter Broadcast Example", (data1: string) => {
 </Tabs>
 ```
 
+## Broadcasting
+Sometimes you need to send a message to all the clients. Don't worry, ZilaWS got you covered.
+
 ### Send
-Unlike `waiter`, this will return void and is not awaitable.
+Unlike [waiters](../waiters), this will return void and is not awaitable.
 
 ```mdx-code-block
 <Tabs>
@@ -130,6 +104,34 @@ server.broadcastSend("Broadcast Example", "Broadcast data");
 ```ts
 client.setMessageHandler("Broadcast Example", (data1: string) => {
     //Your code here...
+});
+```
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Waiter
+
+You might use [waiters](../waiters), if you're expecting to receive back data or just want to make sure the client did what you asked it for.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="S" label="Server Side">
+```
+```ts
+const responses: Array<string | undefined> = 
+  server.broadcastWaiter<string>("Waiter Broadcast Example", "Broadcast data");
+```
+
+```mdx-code-block 
+  </TabItem>
+  <TabItem value="C" label="Client Side">
+```
+```ts
+client.setMessageHandler("Waiter Broadcast Example", (data1: string) => {
+    //Your code here...
+    return "A message from the client side";
 });
 ```
 ```mdx-code-block

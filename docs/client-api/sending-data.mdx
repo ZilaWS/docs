@@ -7,8 +7,9 @@ import TabItem from "@theme/TabItem";
 # Sending data
 
 ## Waiter
-ZilaWS has a unique function called `waiter`. Waiters (as their name states) can be awaited.
+ZilaWS has a unique function called [waiter](../waiters). Waiters (as their name states) can be awaited.
 They only resolve when the `MessageHandler` on the client side resolves or returns thus making it perfect to retrieve data from a client.
+However if the client does not respond in time, waiters will resolve as *undefined*.
 
 #### Syntax
 ```ts

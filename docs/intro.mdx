@@ -118,7 +118,7 @@ server.setMessageHandler("serverSample", (socket, text: string) => {
 ```
 
 ## Using waiters
-ZilaWS lets you use *async* `waiters` to excute callbacks on the on the other side of the connection and retrieve data.
+ZilaWS lets you use *async* [waiters](./waiters) to excute callbacks on the on the other side of the connection and retrieve data.
 ```ts
 const data = await client.waiter("serverSample", "Success? ") as string;
 console.log(data); //Success? Success!

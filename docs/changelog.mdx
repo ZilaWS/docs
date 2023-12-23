@@ -99,6 +99,10 @@ This update is focused on cookie management and user authentication.
 
 ### New Features
 
+- Timeout for waiters
+  - Set the timeout with `client.maxWaiterTime`
+  - `waiterTimeout` function with a max waiting time parameter
+
 - The server side can now set and remove cookies.
   - The server side does not have access to cookies that were created after the establishment of the ws connection by default. In order to resync the cookies, use the `syncCookies` function. This also means that it's important to sync the cookies after one got deleted.
   - New local events:
