@@ -59,7 +59,7 @@ const config: Config = {
     // Replace with your project's social card
     announcementBar: {
       backgroundColor: "#a84300",
-      content: " <a href=\"/docs/next/changelog\">Check what's in 2.0.0!</a>",
+      content: " <a href=\"/docs/changelog\">Check out what's new in 2.0.0!</a>",
       isCloseable: true,
       textColor: "white"
     },
