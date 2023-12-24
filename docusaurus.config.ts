@@ -56,6 +56,11 @@ const config: Config = {
   ],
 
   themeConfig: {
+    colorMode: {
+      defaultMode: "dark",
+      disableSwitch: false,
+      respectPrefersColorScheme: true
+    },
     // Replace with your project's social card
     announcementBar: {
       backgroundColor: "#a84300",
