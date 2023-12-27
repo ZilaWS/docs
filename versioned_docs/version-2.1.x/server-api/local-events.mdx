@@ -1,0 +1,39 @@
+---
+sidebar_position: 7
+---
+import OR from "@site/src/components/OR";
+
+# Local events
+Things happen all the time server side. They can be tracked, with `EventListener`s.
+
+## Registering an EventListener
+The first parametes is the event's name, the second is it's callback function. You don't have to worry about registering a function with wrong parameters. All of them are staticly typed.
+```ts
+client.addEventListener("onStatusChange", (newStauts: WSStatus) => {
+    console.log(newStauts); //Enum
+});
+```
+
+<OR />
+
+This will only get executed once.
+```ts
+client.onceEventListener("onStatusChange", (newStauts: WSStatus) => {
+    console.log(newStauts); //Enum
+});
+```
+
+## Currently available event types
+
+- onClientConnect
+  - Runs every time a client connects.
+- onClientDisconnect
+  - Runs every time a client disconnects
+- onClientMessage
+  - Runs every time after a the server processes a message from the client.
+- onClientMessageBeforeCallback
+  - Runs every time a server recieves a message from the client before any registered callback could run
+- onClientRawMessageBeforeCallback
+  - Runs every time a server recieves a message from the client before any registered callback could run.
+- onCookieSync
+  - Runs when a client calls `syncCookies`.

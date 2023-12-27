@@ -1,0 +1,113 @@
+---
+sidebar_position: 1
+---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+# Getting started
+
+Let's start sending and recieving data!
+
+## Instaling
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/download/) version 18.0.0 or above:
+  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+
+### Downloading
+<Tabs>
+<TabItem value="Server" label="Server API">
+
+```bash
+npm i zilaws-server@latest
+```
+
+</TabItem>
+<TabItem value="Client" label="Client API">
+
+```bash
+npm i zilaws-client@latest
+```
+
+</TabItem>
+</Tabs>
+
+## Starting the server
+In ZilaWS 1.0, you can run multiple servers in the same application. You can start by initializing a server instance and storing it in a variable.
+
+
+<Tabs>
+<TabItem value="mts" label="ES Module">
+
+```ts
+import { ZilaServer } from "zilaws-server";
+
+const server = new ZilaServer({
+  port: 6589,
+  logger: true, //Enables logging
+  verbose: true //Enables verbose logging
+});
+```
+
+
+</TabItem>
+<TabItem value="cts" label="CommonJS">
+
+```ts
+const { ZilaServer } = require("zilaws-server");
+
+const server = new ZilaServer({
+  port: 6589,
+  logger: true, //Enables logging
+  verbose: true //Enables verbose logging
+});
+```
+
+</TabItem>
+</Tabs>
+
+
+## Connecting to the server
+
+Connecting to the server is asynchronous. The first parameter is a standard websocket connection URL string. The second parameter of the `connectTo` function is optional. It is a callback which gets called when a problem or error happens.
+
+<Tabs>
+  <TabItem value="mts" label="ES Module">
+```ts
+import { connectTo } from "zilaws-client";
+
+const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
+  console.error("ZilaConnection error happened:\n" + reason);
+});
+```
+  </TabItem>
+  <TabItem value="cts" label="CommonJS">
+```ts
+const { connectTo } = require("zilaws-client");
+
+const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
+  console.error("ZilaConnection error happened:\n" + reason);
+});
+```
+  </TabItem>
+</Tabs>
+
+
+## Recieving data from the client side
+In order to recieve data from the client side, you need to register a `MessageHandler`. A `MessageHandler` has an identifier and a callback with any number of any typed parameters. The callback gets called when a client asks for it. The data recieved from the client will be passed as parameters.
+
+```ts
+server.setMessageHandler("serverSample", (socket, text: string) => {
+  //Do your magic
+  return text + " Success!";
+});
+```
+
+## Using waiters
+ZilaWS lets you use *async* [waiters](./waiters) to excute callbacks on the on the other side of the connection and retrieve data.
+```ts
+const data = await client.waiter("serverSample", "Success? ") as string;
+console.log(data); //Success? Success!
+```
