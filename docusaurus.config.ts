@@ -37,7 +37,7 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/ZilaWS/docs/blob/main/',
-          lastVersion: "2.0.x"
+          lastVersion: "2.1.x"
         },
         theme: {
           customCss: './src/css/custom.css',

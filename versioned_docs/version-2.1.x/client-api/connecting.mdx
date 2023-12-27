@@ -1,0 +1,48 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Connecting to a server
+
+
+## Importing the library
+
+
+<Tabs>
+  <TabItem value="mts" label="ES Module">
+
+```ts
+import { connectTo } from "zilaws-client";
+```
+
+if you need them, you can import types too:
+```ts
+import {connectTo, ZilaConnection, WSStatus } from "zilaws-client";
+```
+ 
+  </TabItem>
+  <TabItem value="cts" label="CommonJS">
+
+  ```ts
+const { connectTo } = require("zilaws-client");
+```
+
+if you need them, you can import types too:
+```ts
+const { ZilaConnection, WSStatus } = require("zilaws-client");
+```
+
+  </TabItem>
+</Tabs>
+
+
+## Connecting
+Connecting to the server is asynchronous. The first parameter is a standard websocket connection URL string. The second parameter of the `connectTo` function is optional. It is a callback which gets called when a problem or error happens.
+```ts
+const client = await connectTo("wss://yourhost.com:6589", (reason?: string) => {
+  console.error("ZilaConnection error happened:\n" + reason);
+});
+```
