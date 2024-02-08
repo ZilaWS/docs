@@ -47,18 +47,18 @@ client.setMessageHandler("Example name", (data1: string, data2: boolean) => {
 
 #### Syntax
 ```ts
-waiter(socket: ZilaConnection, eventHandlerName: string, ...data: any[])
+waiter<T>(socket: ZilaConnection, eventHandlerName: string, ...data: any[]) : Promise<T | undefined>
 ```
 
 <Tabs>
   <TabItem value="S" label="Server Side">
 ```ts
-console.log(await server.waiter<string>(socket, "Example name", "myData", true));
+const response: string | undefined = await server.waiter<string>(socket, "Example name", "myData", true);
 ```
 <OR/>
 
 ```ts
-console.log(await socket.waiter<string>("Example name", "myData", true));
+const response: string | undefined = await socket.waiter<string>("Example name", "myData", true);
 ```
   </TabItem>
   <TabItem value="C" label="Client Side">
@@ -108,7 +108,7 @@ You might use [waiters](../waiters), if you're expecting to receive back data or
 
 ```ts
 const responses: Array<string | undefined> = 
-  server.broadcastWaiter<string>("Waiter Broadcast Example", "Broadcast data");
+  await server.broadcastWaiter<string>("Waiter Broadcast Example", "Broadcast data");
 ```
 
   </TabItem>

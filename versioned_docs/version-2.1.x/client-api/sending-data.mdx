@@ -14,13 +14,13 @@ However if the client does not respond in time, waiters will resolve as *undefin
 #### Syntax
 
 ```ts
-waiter(eventHandlerName: string, ...data: any[])
+waiter<T>(eventHandlerName: string, ...data: any[]): Promise<T | undefined>
 ```
 
 <Tabs>
   <TabItem value="S" label="Client Side">
 ```ts
-console.log(await client.waiter("Example name", "myData", true));
+const response: string | undefined = await client.waiter("Example name", "myData", true);
 ```
   </TabItem>
   <TabItem value="C" label="Server Side">
