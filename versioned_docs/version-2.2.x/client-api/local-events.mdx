@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 import OR from "@site/src/components/OR";
@@ -33,3 +33,7 @@ client.onceEventListener("onStatusChange", (newStauts: WSStatus) => {
   - Runs after the client processes a newly recieved message
 - onRawMessageRecieved
   - Runs before the client processes a newly recieved message
+- onCookieSet
+  - Runs when the server sends down one or multiple new cookies.
+- onCookieDelete
+  - Runs when the server deletes a cookie

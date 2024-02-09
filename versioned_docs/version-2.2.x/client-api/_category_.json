@@ -1,6 +1,6 @@
 {
-  "label": "Server API",
-  "position": 2,
+  "label": "Client API",
+  "position": 5,
   "link": {
     "type": "generated-index"
   }
