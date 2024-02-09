@@ -8,7 +8,7 @@ import OR from "@site/src/components/OR";
 There are two ways to reciveve data from the server. With ZilaWS data can be asked and waited for.
 
 ## Asking for data
-To ask the server for data, the `waiter` function can be used. This will **trigger a server side [MessageHandler](/docs/intro#recieving-data-from-the-client-side)** and get its return value.
+To ask the server for data, the `waiter` function can be used. This will **trigger a server side [MessageHandler](../server-api/recieving-data#waiting-for-data)** and get its return value.
 ```ts
 const client = await connectTo("wss://yourhost.com");
 

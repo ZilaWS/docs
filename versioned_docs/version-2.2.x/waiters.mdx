@@ -1,0 +1,65 @@
+---
+sidebar_position: 3
+---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import OR from "@site/src/components/OR";
+
+# Waiters
+
+ZilaWS has a unique function called `waiter`. Waiters (as their name suggests) can be awaited.
+They resolve when the client side *MessageHandler* resolves or returns thus making it perfect for retrieving data from a client.
+However if the client does not respond in time, waiters will resolve as *undefined*.
+
+## Parameters
+
+Regular waiters wait for a response for the amount of time specified by the `maxWaiterTime` property. This is both a property on the client and the server.
+
+* `identifier`: The name of the [MessageHandler](./client-api/recieving-data#waiting-for-data.mdx) on the other side of the connection. 
+* `maxWaitingTime`: This paramater overrides the maximum waiting time for the corresponding `waiter` or `broadcastWaiter`. The value is in miliseconds.
+* `...data`: A waiter (or a send) can be given any number of any data.
+
+## Waiter
+
+<Tabs>
+<TabItem value="Server" label="Server-side">
+
+```ts
+socket.waiter<T>(identifier: string, ...data: any[]): Promise<T | undefined>
+```
+
+```ts
+socket.waiterTimeout<T>(identifier: string, maxWaitingTime: number, ...data: any[]): Promise<T | undefined>
+```
+
+<OR/>
+
+```ts
+server.waiter<T>(socket: ZilaClient, identifier: string, ...data: any[]): Promise<T | undefined>
+```
+
+```ts
+server.waiterTimeout<T>(socket: ZilaClient, identifier: string, maxWaitingTime: number, ...data: any[]): Promise<T | undefined>
+```
+
+</TabItem>
+<TabItem value="Client" label="Client-side">
+
+```ts
+client.waiter<T>(identifier: string, ...data: any[]): Promise<T | undefined>
+```
+
+</TabItem>
+</Tabs>
+
+## BroadcastWaiter
+
+These functions only return values from those clients which respond in time.
+
+```ts
+server.broadcastWaiter<T>(identifier: string, ...data: any[]): Promise<Array<T>>
+```
+
+```ts
+server.broadcastWaiterTimeout<T>(identifier: string, maxWaiterTime: number, ...data: any[]): Promise<Array<T>>
+```

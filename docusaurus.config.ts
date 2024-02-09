@@ -37,7 +37,7 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/ZilaWS/docs/blob/main/',
-          lastVersion: "2.1.x"
+          lastVersion: "2.2.x"
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -71,7 +71,7 @@ const config: Config = {
     metadata: [
       {
         name: "keywords",
-        content: "websocket, library, waiter, async, client, server, typescript, javascript, connection, eventhandler, tcp, realtime, browser, node, events, fast"
+        content: "zila, ws, websocket, library, waiter, async, client, server, typescript, javascript, connection, eventhandler, tcp, realtime, browser, node, events, fast"
       }
     ],
     image: 'img/logo.png',
