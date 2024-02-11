@@ -14,6 +14,20 @@
   .heroBanner {
     padding: 2rem;
   }
+
+  .featuresgrid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: repeat(1fr, 4);
+  }
+  
+  .mghandlers {
+    grid-column: 1/2 !important;
+  }
+
+  .mghandlersbtn {
+    grid-column: 1/2 !important;
+    grid-row: 4/5 !important;
+  }
 }
 
 .buttons {

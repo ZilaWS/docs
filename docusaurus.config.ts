@@ -72,6 +72,14 @@ const config: Config = {
       {
         name: "keywords",
         content: "zila, ws, websocket, library, waiter, async, client, server, typescript, javascript, connection, eventhandler, tcp, realtime, browser, node, events, fast"
+      },
+      {
+        name: "og:image:width",
+        content: "128"
+      },
+      {
+        name: "og:image:height",
+        content: "128"
       }
     ],
     image: 'img/logo.png',
