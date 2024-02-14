@@ -48,7 +48,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_outer_space_re_u9vd.svg').default,
     description: (
       <>
-        <h6>Average speed</h6>
+        <span style={{fontWeight: "bold", display: 'block'}}>Average speed</span>
         Client side waiter: 5 ms <br/>
         Server Side waiter: 6 ms <br/>
         <span style={{ fontSize: "0.8rem" }}>
