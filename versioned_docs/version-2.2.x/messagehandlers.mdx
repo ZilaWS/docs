@@ -1,0 +1,68 @@
+---
+sidebar_position: 4
+keywords: [messagehandler, message, event, handler]
+---
+
+# Messagehandlers
+
+Message handlers are basic event handlers for websocket messages.
+They are called message handlers because you can use ZilaWS to listen to local events such as new connections with event handlers. THe two are not the same thing.
+
+## Message or event handler?
+
+Message handlers are for websocket messages/waiters. Event handlers are for local events like a new connection on the server side or disconnecting on the client side.
+
+## Usage
+
+You can define MesageHandlers either on client or server side.
+In this example, we'll use them on the server.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+    <TabItem label="Waiter" value="waiter">
+    ```ts title="server.ts"
+    server.setMessageHandler("Login", (client, username: string, password: string) => {
+        const token: string | undefined = loginUser(username, password);
+        if(token) {
+            return `SUCCESS:token`;
+        }else {
+            return `FAIL:BadCredentials`;
+        }
+    });
+    ```
+
+    ```ts title="client.ts"
+    const resp = await client.waiter("Login", usernameInput, passwordInput);
+    ```
+    </TabItem>
+    <TabItem label="Send" value="send">
+    ```ts title="server.ts"
+    /*
+        In reality you'd probably use a waiter for this action too.
+        You can return values but the other side (the client in this example) 
+        will only recieve the returned or resolved value if it is a waiter and not a simple send.
+    */  
+    server.setMessageHandler("LikePost", (client, postId: string) => {
+        //This right here is a fine case of extending the ZilaClient class
+        if(client.canLikePost(postId)) {
+            return false;
+        }
+
+        client.likePost(postId);
+        return true;
+    });
+    ```
+
+    Read more about extending <a href="./server-api/extending">here</a>.
+
+    ```ts title="client.ts"
+    client.send("LikePost", postId);
+    ```
+    </TabItem>
+</Tabs>
+
+
+## Playground
+<embed src='https://stackblitz.com/edit/stackblitz-starters-4y6s2e?ctl=1&embed=1&file=readme.md&view=editor' style={{marginInline: "auto", display: "block", width: "80%", height: "600px"}}></embed>
