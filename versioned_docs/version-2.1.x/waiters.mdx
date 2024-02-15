@@ -8,14 +8,17 @@ import OR from "@site/src/components/OR";
 # Waiters
 
 ZilaWS has a unique function called `waiter`. Waiters (as their name suggests) can be awaited.
-They resolve when the client side *MessageHandler* resolves or returns thus making it perfect for retrieving data from a client.
-However if the client does not respond in time, waiters will resolve as *undefined*.
+They resolve when a [MessageHandler](./messagehandlers) on the other side of the connection resolves or returns thus making it perfect for retrieving data.
+However if the client or server does not respond in time, waiters will resolve as *undefined*.
+
+- Regular `waiter`s wait for a response for the time specified by the `maxWaiterTime` property.
+    - On the *server* side this is a property of the *server* object.
+    - On the *client* side this is a property of the *client* object.
+- `waiterTimeout`s wait for a response for the time specified by the `maxWaitingTime` parameter in miliseconds.
 
 ## Parameters
 
-Regular waiters wait for a response for the amount of time specified by the `maxWaiterTime` property. This is both a property on the client and the server.
-
-* `identifier`: The name of the [MessageHandler](./client-api/recieving-data#waiting-for-data.mdx) on the other side of the connection. 
+* `identifier`: The name of the [MessageHandler](./messagehandlers) on the other side of the connection. 
 * `maxWaitingTime`: This paramater overrides the maximum waiting time for the corresponding `waiter` or `broadcastWaiter`. The value is in miliseconds.
 * `...data`: A waiter (or a send) can be given any number of any data.
 
