@@ -28,10 +28,56 @@
     grid-column: 1/2 !important;
     grid-row: 4/5 !important;
   }
+
+  .sider {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .sider > section {
+    width: 100% !important;
+  }
+
+  .sider > section > div  {
+
+  }
+
+  .sider > section > div > a {
+
+  }
 }
 
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.sider {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 65%;
+  margin-inline: auto;
+}
+
+.sider > section {
+  margin-inline: auto;
+  width: 45%;
+  margin-block: 20px;
+}
+
+.sider > section > div {
+  margin-inline: auto;
+  width: fit-content;
+  height: 100%;
+}
+
+.sider > section > div > p {
+  text-align: justify;
+}
+
+.sider h3 {
+  text-align: center;
 }

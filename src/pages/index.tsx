@@ -39,22 +39,60 @@ export default function Home(): JSX.Element {
         <p style={{ textAlign: "center" }}>Technically it is compatible with a simple WS server or client, however you'll need to take care of the message handling.</p>
         <h2 style={{ textAlign: 'center' }}>Installing</h2>
 
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <section style={{ margin: '30px' }}>
-            <h3 style={{textAlign: "center"}}>Client</h3>
-            <Codeblock language='bash'>
-              npm install zilaws-client@latest
-            </Codeblock>
+        <div className={styles.sider}>
+          <section>
+            <h3>Client</h3>
+            <div>
+              <Codeblock language='bash'>
+                npm install zilaws-client@latest
+              </Codeblock>
+            </div>
           </section>
-          <section style={{ margin: '30px' }}>
-            <h3 style={{textAlign: "center"}}>Server</h3>
-
-            <Codeblock language='bash'>
-              npm install zilaws-server@latest
-            </Codeblock>
+          <section>
+            <h3>Server</h3>
+            <div>
+              <Codeblock language='bash'>
+                npm install zilaws-server@latest
+              </Codeblock>
+            </div>
           </section>
         </div>
-        <div className={styles.featuresgrid} style={{ display: 'grid', gridTemplateRows: "2fr 1fr", gridTemplateColumns: "1fr 1fr", width: "65%", marginInline: "auto" }}>
+        
+        <h2 style={{textAlign: "center"}}>Main features</h2>
+        
+        <div className={styles.sider}>
+          <section>
+            <h3>Waiters</h3>
+            <div>
+              <p>
+              ZilaWS has a unique function called <Code>waiter</Code>. Waiters (as their name suggests) can be awaited. They resolve when a <Code>MessageHandler</Code> on the other side of the connection resolves or returns thus making it perfect for retrieving data. However if the client or server does not respond in time, waiters will resolve as <i>undefined</i>.
+              </p>
+              <Link className={"button button--secondary button--md"} style={{ display: "block", marginInline: "auto", width: "fit-content" }} to={"/docs/waiters"}>Read more here</Link>
+            </div>
+          </section>
+          <section>
+            <h3>MessageHandlers</h3>
+            <div>
+              <p>
+                Tired of having to build an event handler system for WS messages every time you start a new project? ZilaWS got you covered with <Code>MessageHandlers</Code>!
+              </p>
+              <Link className={"button button--secondary button--md"} style={{ display: "block", marginInline: "auto", width: "fit-content" }} to={"/docs/messagehandlers"}>Read more here</Link>
+            </div>
+          </section>
+          <section>
+            <h3>Extending</h3>
+            <div>
+              <p>
+                Since ZilaWS is object oriented, you have the ability to extend its classes! For example if you extend the <Code>ZilaClient</Code> class on the server side, you can store your own data on it which will be directly associated with the given ws client. This makes handling user data and sessions so much easier!<br/>
+                Also because ZilaWS is written in TypeScript, you'll have full type-support for your extended class.
+              </p>
+              <Link className={"button button--secondary button--md"} style={{ display: "block", marginInline: "auto", width: "fit-content" }} to={"/docs/server-api/extending"}>Read more here</Link>
+            </div>
+          </section>
+        </div>
+        
+        
+        {/* <div className={styles.featuresgrid} style={{ display: 'grid', gridTemplateRows: "2fr 1fr", gridTemplateColumns: "1fr 1fr", width: "65%", marginInline: "auto" }}>
           <div style={{ textAlign: "center", gridColumn: "1/2" }}>
             <h2>Waiters</h2>
             <p>
@@ -73,7 +111,10 @@ export default function Home(): JSX.Element {
           <div className={styles.mghandlersbtn} style={{ gridColumn: "2/3", gridRow: "2/3" }}>
             <Link className={"button button--secondary button--md"} style={{ display: "block", marginInline: "auto", width: "fit-content" }} to={"/docs/messagehandlers"}>Read more here</Link>
           </div>
-        </div>
+        </div> */}
+
+
+
         <HomepageFeatures />
       </main>
     </Layout>
