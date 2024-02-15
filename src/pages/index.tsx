@@ -71,7 +71,7 @@ export default function Home(): JSX.Element {
             </p>
           </div>
           <div className={styles.mghandlersbtn} style={{ gridColumn: "2/3", gridRow: "2/3" }}>
-            <Link className={"button button--secondary button--md"} style={{ display: "block", marginInline: "auto", width: "fit-content" }} to={"/docs/client-api/recieving-data#waiting-for-data"}>Read more here</Link>
+            <Link className={"button button--secondary button--md"} style={{ display: "block", marginInline: "auto", width: "fit-content" }} to={"/docs/messagehandlers"}>Read more here</Link>
           </div>
         </div>
         <HomepageFeatures />
