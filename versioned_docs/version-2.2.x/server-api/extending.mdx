@@ -20,11 +20,13 @@ Extending is good for storing extra data (or even declaring functions) associate
 and is only exported to make the extending easier.*/
 import { ZilaServer, ZilaClient, WebSocketClient, IncomingHttpHeaders } from "zilaws-server";
 
+interface IClientData {
+    rank: "admin" | "user";
+    username: string;
+}
+
 class MyClient extends ZilaClient {
-    public clientData: {
-        rank: "admin" | "user";
-        username: string;
-    }
+    public clientData?: IClientData;
 
     //Sadly, you need to define the constructor by hand.
     constructor(
@@ -78,11 +80,13 @@ server.onceMessageHandler("Anything", (socket) => {
 and is only exported to make the extending easier.*/
 const { ZilaServer, ZilaClient, WebSocketClient, IncomingHttpHeaders } = require("zilaws-server");
 
+interface IClientData {
+    rank: "admin" | "user";
+    username: string;
+}
+
 class MyClient extends ZilaClient {
-    public clientData: {
-        rank: "admin" | "user";
-        username: string;
-    }
+    public clientData?: IClientData;
 
     //Sadly, you need to define the constructor by hand.
     constructor(
