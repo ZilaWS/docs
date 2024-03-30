@@ -26,6 +26,9 @@ jobs:
 
     - name: 🏗️ Build the site
       run: npm run build
+      env:
+        CI: true
+        CLARITY_PROJECT_ID: ${{ secrets.CLARITY_PROJECT_ID}}
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4

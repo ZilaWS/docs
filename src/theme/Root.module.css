@@ -1,0 +1,21 @@
+.cContainer {
+    /* background-color: #fff; */
+    align-items: center !important;
+}
+
+.cContainer > div {
+    /* background-color: #fff; */
+    margin: 0;
+    margin-right: 20px;
+}
+
+.cContainer > div > button {
+    width: 80px;
+    height: 30px;
+    border-radius: 5px !important;
+    font-weight: bold;
+}
+
+.cContainer > div > button:hover {
+    filter: brightness(90%);
+}

@@ -2,9 +2,12 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 const config: Config = {
   title: 'ZilaWS',
-  tagline: 'A blazingly fast websocket library with async waiters',
+  tagline: 'A blazingly fast websocket library with async capabilites',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -53,6 +56,12 @@ const config: Config = {
         indexPages: true
       } satisfies Partial<import("@easyops-cn/docusaurus-search-local").PluginOptions>,
     ],
+    [
+      require.resolve("./clarity.ts"),
+      {
+        projectId: process.env.CLARITY_PROJECT_ID
+      }
+    ]
   ],
 
   themeConfig: {
@@ -61,10 +70,9 @@ const config: Config = {
       disableSwitch: false,
       respectPrefersColorScheme: true
     },
-    // Replace with your project's social card
     announcementBar: {
-      backgroundColor: "#a84300",
-      content: " <a href=\"/docs/changelog\">Check out what's new in 2.0.0!</a>",
+      backgroundColor: "#5865F2",
+      content: `We've made a <a href="https://discord.gg/Bcwsuz96bb" style="font-style: italic;">Discord server</a>!`,
       isCloseable: true,
       textColor: "white"
     },
@@ -97,9 +105,16 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/ZilaWS',
-          label: 'GitHub',
           position: 'right',
+          'aria-label': 'Discord Invite',
+          className: "navbar--discord-link",
+          href: 'https://discord.gg/Bcwsuz96bb'
+        },
+        {
+          href: 'https://github.com/ZilaWS',
+          position: 'right',
+          className: 'navbar--github-link',
+          'aria-label': 'GitHub Organization'
         },
         {
           type: 'docsVersionDropdown',
@@ -129,6 +144,9 @@ const config: Config = {
             {
               label: "License",
               to: 'license'
+            },
+            {
+              html: `<a class="footer__link-item" href="/privacy-statement.pdf" target="_blank" rel="noopener noreferrer">Privacy</a>`
             }
           ]
         },
@@ -136,13 +154,17 @@ const config: Config = {
           title: 'More',
           items: [
             {
+              label: 'Discord',
+              href: 'https://discord.gg/Bcwsuz96bb'
+            },
+            {
               label: 'GitHub',
               href: 'https://github.com/ZilaWS',
-            },
+            }
           ],
         },
       ],
-      copyright: `Code is licensed under <a href="/license">MIT</a><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">Documentation is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img alt="Creative Commons icon" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img alt="Creative Commons icon" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>Built with Docusaurus.  `,
+      copyright: `Code is licensed under <a href="/license">MIT</a><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">Documentation is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img alt="Creative Commons icon" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/creative-commons.svg"><img alt="Creative Commons icon" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/by.svg"></a></p>Built with Docusaurus.  `,
     },
     prism: {
       theme: prismThemes.github,
