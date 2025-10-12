@@ -55,12 +55,6 @@ const config: Config = {
         hashed: true,
         indexPages: true
       } satisfies Partial<import("@easyops-cn/docusaurus-search-local").PluginOptions>,
-    ],
-    [
-      require.resolve("./clarity.ts"),
-      {
-        projectId: process.env.CLARITY_PROJECT_ID
-      }
     ]
   ],
 
@@ -172,5 +166,12 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 };
+
+if (process.env.CLARITY_PROJECT_ID) config.themes.push([
+  require.resolve("./clarity.ts"),
+  {
+    projectId: process.env.CLARITY_PROJECT_ID
+  }
+]);
 
 export default config;
