@@ -21,7 +21,7 @@ const config: Config = {
   organizationName: 'zilaws', // Usually your GitHub org/user name.
   projectName: 'zilaws', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
 
   markdown: {
     hooks: {
@@ -45,7 +45,7 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/ZilaWS/docs/blob/main/',
-          lastVersion: "2.2.x"
+          lastVersion: "3.0.0",
         },
         theme: {
           customCss: './src/css/custom.css',

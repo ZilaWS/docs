@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zilaws.com/sitemap.xml
+Host: https://zilaws.com
+
+# AI-friendly documentation indexes
+# https://zilaws.com/llms.txt
+# https://zilaws.com/llms-full.txt

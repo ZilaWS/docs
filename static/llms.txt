@@ -1,0 +1,33 @@
+# ZilaWS
+
+ZilaWS is a lightweight TypeScript WebSocket library for building client/server realtime apps with message handlers, async waiters, cookie syncing, and browser or Node/Bun support.
+
+Official site: https://zilaws.com/
+Documentation: https://zilaws.com/docs/intro
+Latest docs version: 3.0.0
+Full AI docs index: https://zilaws.com/llms-full.txt
+Sitemap: https://zilaws.com/sitemap.xml
+GitHub organization: https://github.com/ZilaWS
+
+Packages:
+- zilaws-client: https://www.npmjs.com/package/zilaws-client
+- zilaws-server: https://www.npmjs.com/package/zilaws-server
+
+Important docs:
+- Getting started: https://zilaws.com/docs/intro
+- Waiters: https://zilaws.com/docs/waiters
+- MessageHandlers: https://zilaws.com/docs/messagehandlers
+- Client API: https://zilaws.com/docs/client-api/connecting
+- Server API: https://zilaws.com/docs/server-api/starting-the-server
+- Server config: https://zilaws.com/docs/server-api/config
+- Cookie management: https://zilaws.com/docs/server-api/cookie-management
+- Changelog: https://zilaws.com/docs/changelog
+
+Raw documentation source:
+- Current docs: https://github.com/ZilaWS/docs/tree/main/docs
+- Version 3.0.0 docs: https://github.com/ZilaWS/docs/tree/main/versioned_docs/version-3.0.0
+
+Notes for AI agents:
+- Prefer the current `/docs/...` URLs unless the user asks for an older version.
+- Examples are TypeScript-first and generally work with both ESM and CommonJS where shown.
+- The latest client connection pattern is to create `new ZilaConnection()`, register message handlers, then call `connectTo(...)`.
